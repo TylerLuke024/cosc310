@@ -20,8 +20,8 @@ public class ArrayVsArrayListLab {
 
     public static void main(String[] args) throws IOException{
 
-        int arr[] = DataLoader.loadArray("C:\\Users\\Tyler\\OneDrive\\Desktop\\Cosc310\\cosc310\\numbers.txt");
-        ArrayList<Integer> list = DataLoader.loadArrayList("C:\\Users\\Tyler\\OneDrive\\Desktop\\Cosc310\\cosc310\\numbers.txt");
+        int arr[] = DataLoader.loadArray("C:\\cosc310\\numbers.txt");
+        ArrayList<Integer> list = DataLoader.loadArrayList("C:\\cosc310\\numbers.txt");
         Random r = new Random();
         int indicies[] = new int[100_000];
         for(int i = 0; i < indicies.length; i++){
@@ -54,7 +54,7 @@ public class ArrayVsArrayListLab {
         }
 
         // output all of the results
-        for(int i = 0; i < tests.length/2;i++){
+        for(int i = 0; i < tests.length;i += 2){
             if(testAverages[i]<testAverages[i+1]){
                 System.out.println(tests[i].name + " wins with a time of " + testAverages[i]);
             } else {

@@ -15,11 +15,11 @@ public class ArrayInsert extends Target{
         int largerarray[] = new int[indiciesOrnums.length + arr.length];
         for(int i = 0; i < indiciesOrnums.length; i++){
             largerarray[i] = indiciesOrnums[i];
-            sum += largerarray[i];
+            sum ++;
         }
         for(int i = 0; i < arr.length; i++){
             largerarray[i + indiciesOrnums.length] = arr[i];
-            sum += arr[i];
+            sum ++;
         }
         return sum;
     }

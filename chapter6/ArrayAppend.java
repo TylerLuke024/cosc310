@@ -13,7 +13,7 @@ public class ArrayAppend extends Target{
         int result = 0;
         int largerarr[] = java.util.Arrays.copyOf(arr, arr.length+indiciesOrnums.length);
         for(int i = 0; i < indiciesOrnums.length; i++){
-            result += arr[indiciesOrnums[i]];
+            result++;
             largerarr[arr.length + i] = indiciesOrnums[i];
         }
         return result;

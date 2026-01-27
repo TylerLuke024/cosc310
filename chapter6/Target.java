@@ -29,6 +29,7 @@ abstract public class Target {
             int result = method(indiciesOrnums);
             long end = System.nanoTime();
             long elapsed = end - start;
+            total += elapsed;
             results[i] = elapsed;
         }
         double avg = total / (double) TRIALS;

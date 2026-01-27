@@ -11,9 +11,10 @@ public class ListRemove extends Target {
     @Override
     public int method(int[] indicesOrnums) {
         int result = 0;
-        
-        // remove first 20,000 items from the list
-
+        for(int i = 20_000; i < list.size(); i++){
+            list.remove(i-20_000);
+            result++;
+        }
         return result;
     }
 

@@ -17,8 +17,7 @@ public class ArrayRemove extends Target {
         int smallerarray[] = new int [arr.length - 20_000];
         for(int i = 20_000; i < arr.length; i++){
             smallerarray[i - 20_000] = arr[i];
-            result ++;
-            // list.remove[i]; if this were an ArrayList
+            result++;
         }
         return result;
     }
