@@ -7,11 +7,9 @@ public class DNode<T> {
     private DNode<T> next;
 
     public DNode(DNode<T> prev, DNode<T> next, T data) {
-
         this.prev = prev;
         this.next = next;
         this.data = data;
-
     }
 
     public T getData() {
@@ -36,6 +34,11 @@ public class DNode<T> {
 
     public void setNext(DNode<T> next) {
         this.next = next;
+    }
+
+    @Override
+    public String toString() {
+        return "DNode [data=" + data + "]";
     }
 
 }
