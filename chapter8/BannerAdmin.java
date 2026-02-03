@@ -1,5 +1,4 @@
-import chapter8.Person;
-
+package chapter8;
 public class BannerAdmin extends Person {
 
     protected BannerAdmin(String name, String id, String addr, String email) {
