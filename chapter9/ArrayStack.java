@@ -3,7 +3,7 @@ package chapter9;
 import java.util.ArrayList;
 import java.util.EmptyStackException;
 
-public class ArrayStack<T> implements Stack<T> {
+public class ArrayStack<T> implements Stack<T>, Comparable<Stack<T>> {
 
     ArrayList<T> data = new ArrayList<>();
 
@@ -18,7 +18,7 @@ public class ArrayStack<T> implements Stack<T> {
         data.add(d);
     }
 
-    @Override 
+    @Override
     public T pop() throws Exception {
         if (isEmpty()) {
             throw new EmptyStackException();
@@ -27,7 +27,7 @@ public class ArrayStack<T> implements Stack<T> {
     }
 
     @Override
-    public T top() throws Exception{
+    public T top() throws Exception {
         if (isEmpty()) {
             throw new EmptyStackException();
         }
@@ -49,17 +49,18 @@ public class ArrayStack<T> implements Stack<T> {
         if(isEmpty()) {
             return "ArrayStack [data=" + data + ", top()= EMPTY" + ", size()=" + size() + "]";
         } else {
-            try{
+            try {
                 return "ArrayStack [data=" + data + ", top()=" + top() + ", size()=" + size() + "]";
+            } catch (EmptyStackException ex) {
+                return "ArrayStack [data=" + data + ", top()= EMPTY, size()=" + size() + "]";
             } catch (Exception ex) {
-                return "ArrayStack [data=" + data + ", top()= EMPTY" + ", size()=" + size() + "]";
+                return "Something really bad happened to your stack";
             }
         }
     }
 
-
-}
-
-
-    
+    @Override
+    public int compareTo(Stack<T> o) {
+        return size()-o.size();
+    }
 

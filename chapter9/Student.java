@@ -14,7 +14,7 @@ public class Student implements Comparable<Student> {
         String parts2[] = o.name.split(" ");
         return parts1[1].compareTo(parts2[1]);
     }
-    
+
     @Override
     public String toString() {
         return name;
@@ -22,16 +22,15 @@ public class Student implements Comparable<Student> {
 
     public static void main(String[] args) {
         Student students[] = new Student[] {
-            new Student( "John Smith"),
-            new Student( "Adam Sandler"),
-            new Student( "Tyler Luke")
+            new Student("John Smith"),
+            new Student("Adam Sandler"),
+            new Student("Zack Thomas:")
         };
         System.out.println("BEFORE:");
         System.out.println(java.util.Arrays.toString(students));
         java.util.Arrays.sort(students);
         System.out.println("AFTER:");
         System.out.println(java.util.Arrays.toString(students));
-
     }
-
+    
 }

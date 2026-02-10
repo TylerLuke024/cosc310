@@ -8,16 +8,15 @@ public class ListStack<T> implements Stack<T> {
     DLinkedList<T> data = new DLinkedList<>();
 
     /****
-    * designate the "end" of the ArrayList as the top of the stack
-    * @param d - one piece of data we want to add to the stack 
-    * 
-    */
-    
+     * Designate the "end" of the arraylist as the top of stack.
+     * 
+     * @param d - one piece of data we want to add to the stack
+     */
     @Override
     public void push(T d) {
         data.add(d);
     }
-    
+
     @Override
     public T pop() {
         if (isEmpty()) {
@@ -31,7 +30,7 @@ public class ListStack<T> implements Stack<T> {
         if (isEmpty()) {
             throw new EmptyStackException();
         }
-        return data.get(data.size() - 1).getData();
+        return data.get(data.size()-1).getData();
     }
 
     @Override
@@ -46,18 +45,15 @@ public class ListStack<T> implements Stack<T> {
 
     @Override
     public String toString() {
-        if(isEmpty()) {
-            return "ArrayStack [data=" + data + ", top()= EMPTY" + ", size()=" + size() + "]";
+        if (isEmpty()) {
+            return "ListStack [data=" + data + ", top()=EMPTY, size()=" + size() + "]";
         } else {
-            return "ArrayStack [data=" + data + ", top()=" + top() + ", size()=" + size() + "]";
+            return "ListStack [data=" + data + ", top()=" + top() + ", size()=" + size() + "]";
         }
     }
 
+    
 
     
 
 }
-
-
-    
-
