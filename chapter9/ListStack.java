@@ -1,11 +1,11 @@
 package chapter9;
 
-import java.util.ArrayList;
+import my.util.DLinkedList;
 import java.util.EmptyStackException;
 
-public class ArrayStack<T> implements Stack<T> {
+public class ListStack<T> implements Stack<T> {
 
-    ArrayList<T> data = new ArrayList<>();
+    DLinkedList<T> data = new DLinkedList<>();
 
     /****
     * designate the "end" of the ArrayList as the top of the stack
@@ -17,21 +17,21 @@ public class ArrayStack<T> implements Stack<T> {
     public void push(T d) {
         data.add(d);
     }
-
-    @Override 
-    public T pop() throws Exception {
+    
+    @Override
+    public T pop() {
         if (isEmpty()) {
             throw new EmptyStackException();
         }
-        return data.removeLast();
+        return data.removeLast().getData();
     }
 
     @Override
-    public T top() throws Exception{
+    public T top() {
         if (isEmpty()) {
             throw new EmptyStackException();
         }
-        return data.get(data.size() - 1);
+        return data.get(data.size() - 1).getData();
     }
 
     @Override
@@ -49,14 +49,12 @@ public class ArrayStack<T> implements Stack<T> {
         if(isEmpty()) {
             return "ArrayStack [data=" + data + ", top()= EMPTY" + ", size()=" + size() + "]";
         } else {
-            try{
-                return "ArrayStack [data=" + data + ", top()=" + top() + ", size()=" + size() + "]";
-            } catch (Exception ex) {
-                return "ArrayStack [data=" + data + ", top()= EMPTY" + ", size()=" + size() + "]";
-            }
+            return "ArrayStack [data=" + data + ", top()=" + top() + ", size()=" + size() + "]";
         }
     }
 
+
+    
 
 }
 
