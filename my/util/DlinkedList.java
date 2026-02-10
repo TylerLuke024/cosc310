@@ -9,6 +9,35 @@ public class DLinkedList<T> {
     public DLinkedList() {
 
     }
+
+    /**
+     * Returns the node at position i and returns null if i is invalid.
+     * 
+     * @param i
+     * @return null if i is invalid
+     */
+    public DNode<T> get(int i) {
+        if (i>size || i<0)
+            return null;
+
+        // decide whether we should start at head or tail
+        if (i < size/2) {
+            // start at the head
+            DNode<T> n=head;
+            for (int j=0; j<i; j++) {
+                n=n.getNext();
+            }
+            return n;
+
+        } else {
+            // start at the tail
+            DNode<T> n=tail;
+            for (int j=0; j<size-i-1; j++) {
+                n=n.getPrev();
+            }
+            return n;
+        }
+    }
     
     // need to break the connection between node and whatever its current "next" is
     public void addAfter(DNode<T> node, T data) {
