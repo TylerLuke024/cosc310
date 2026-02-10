@@ -2,7 +2,7 @@ package chapter9;
 
 import my.util.DLinkedList;
 
-public class lab2 {
+public class Lab2a {
     public static void main(String[] args) throws Exception{
         Stack<String> airports = new ArrayStack<>();
         System.out.println(airports);
