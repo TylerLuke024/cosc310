@@ -89,6 +89,44 @@ public class DLinkedList<T> {
         return newnode;
     }
 
+    /**
+     * Returns the last node ... null if list is empty
+     * 
+     * @return null if list is empty
+     */
+    public DNode<T> removeLast() {
+        if (size==0) {
+            return null;
+        } else if (size==1) {
+            DNode<T> n = tail;
+            head=null;
+            tail=null;
+            size--;
+            return n;
+        } 
+
+        // only make it to here in a normal sized list
+        DNode<T> oldtail = tail;
+        tail.getPrev().setNext(null);
+        tail = tail.getPrev();
+        size--;
+
+        // if and only if the new size is one
+        if (size==1) {
+            head = tail;
+        }
+
+        return oldtail;
+    }
+
+    public int size() {
+        return size;
+    }
+
+    public boolean isEmpty() {
+        return size==0;
+    }
+
     @Override
     public String toString() {
         return "DLinkedList [head=" + head + ", tail=" + tail + ", size=" + size + "]";
