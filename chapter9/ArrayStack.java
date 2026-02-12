@@ -63,4 +63,5 @@ public class ArrayStack<T> implements Stack<T>, Comparable<Stack<T>> {
     public int compareTo(Stack<T> o) {
         return size()-o.size();
     }
+}
 
