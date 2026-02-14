@@ -1,5 +1,8 @@
 package chapter9;
 
+import java.util.EmptyStackException;
+import java.util.NoSuchElementException;
+
 import my.util.DLinkedList;
 import my.util.DNode;
 
@@ -13,13 +16,16 @@ public class DLinkedListQueue<T> implements Queue<T> {
 
     @Override
     public void enqueue(T item) {
-        // TODO (enqueue at tail)
+        list.add(item);
     }
 
     @Override
     public T dequeue() throws Exception {
         // TODO (dequeue from head using removeFirst())
-        return null;
+        if (isEmpty()) {
+            throw new NoSuchElementException();
+        }
+        return list.removeFirst().getData();
     }
 
     @Override
