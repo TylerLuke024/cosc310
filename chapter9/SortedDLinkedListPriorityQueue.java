@@ -32,19 +32,19 @@ public class SortedDLinkedListPriorityQueue<T> implements PriorityQueue<T> {
             list.add(newentry);
             return;
         }
-        // TODO: find insertion point and insert so list is sorted by priority ASC
-        // Algorithm: make sure first item in DLinkedList is always highest priority
-        // start with first item and traverse the list until you get to a higher priority item 
-        // insert the new intem before the one you just found
-
+        
+        // Algorithm: make sure first item in DLInkedList is always highest priority
+        // Start with first item and traverse the list until you get to a higher priority item
+        // Insert the new item before the one you just found
         DNode<Entry<T>> curr = list.get(0);
-        while (curr != null) {
-            if (priority < curr.getData().priority) {
+        while (curr!=null) {
+            if (priority<curr.getData().priority) {
                 list.addBefore(curr, newentry);
                 break;
             }
             curr = curr.getNext();
         }
+
     }
 
     @Override

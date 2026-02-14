@@ -22,9 +22,6 @@ public class DLinkedListQueue<T> implements Queue<T> {
     @Override
     public T dequeue() throws Exception {
         // TODO (dequeue from head using removeFirst())
-        if (isEmpty()) {
-            throw new NoSuchElementException();
-        }
         return list.removeFirst().getData();
     }
 

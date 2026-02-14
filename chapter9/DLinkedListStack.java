@@ -3,7 +3,6 @@ package chapter9;
 import java.util.EmptyStackException;
 
 import my.util.DLinkedList;
-import my.util.DNode;
 
 public class DLinkedListStack<T> implements Stack<T> {
 
@@ -21,9 +20,7 @@ public class DLinkedListStack<T> implements Stack<T> {
     @Override
     public T pop() throws Exception {
         // TODO
-        if (isEmpty()) {
-            throw new EmptyStackException();
-        }
+       
         return list.removeLast().getData();
     }
 

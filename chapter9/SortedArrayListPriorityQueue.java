@@ -27,7 +27,7 @@ public class SortedArrayListPriorityQueue<T> implements PriorityQueue<T> {
     @Override
     public void enqueue(int priority, T data) {
         // TODO: insert so list is sorted by priority ASC (lower number is higher priority)
-        list.add(new Entry(priority, data));
+        list.add(new Entry<>(priority, data));
         list.sort(null);
     }
 
