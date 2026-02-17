@@ -1,5 +1,7 @@
 package chapter9;
 
+import java.util.NoSuchElementException;
+
 import my.util.DLinkedList;
 import my.util.DNode;
 
@@ -15,7 +17,7 @@ public class SortedDLinkedListPriorityQueue<T> implements PriorityQueue<T> {
 
         @Override
         public int compareTo(Entry<T> o) {
-            return o.priority - this.priority;
+            return this.priority - o.priority;
         }
     }
 
@@ -44,19 +46,26 @@ public class SortedDLinkedListPriorityQueue<T> implements PriorityQueue<T> {
             }
             curr = curr.getNext();
         }
+        if (curr == null) list.add(newentry);
 
     }
 
     @Override
     public T dequeue() throws Exception {
         // TODO: removeFirst()
-        return null;
+        if (isEmpty()) {
+            throw new NoSuchElementException();
+        }
+        return list.removeFirst().getData().data;
     }
 
     @Override
     public T front() throws Exception {
         // TODO: peek head
-        return null;
+        if (isEmpty()) {
+            throw new NoSuchElementException();
+        }
+        return list.get(0).getData().data;
     }
 
     @Override

@@ -15,12 +15,15 @@ public class DLinkedListStack<T> implements Stack<T> {
     @Override
     public void push(T item) {
         // TODO (use tail as the top)
+        list.add(item);
     }
 
     @Override
     public T pop() throws Exception {
         // TODO
-       
+        if (list.isEmpty()) {
+            throw new EmptyStackException();
+        }
         return list.removeLast().getData();
     }
 
@@ -30,7 +33,7 @@ public class DLinkedListStack<T> implements Stack<T> {
         if (isEmpty()) {
             throw new EmptyStackException();
         }
-        return null;
+        return list.get(list.size() - 1).getData();
     }
 
     @Override

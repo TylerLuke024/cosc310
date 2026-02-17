@@ -94,6 +94,7 @@ public class DLinkedList<T> {
         return newnode;
     }
 
+    // inserts data at the end of the linked list
     public DNode<T> add(T data) {
         DNode<T> newnode = new DNode<>(tail, null, data);
         if (size == 0) {

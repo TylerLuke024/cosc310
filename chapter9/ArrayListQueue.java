@@ -1,6 +1,7 @@
 package chapter9;
 
 import java.util.ArrayList;
+import java.util.NoSuchElementException;
 
 public class ArrayListQueue<T> implements Queue<T> {
 
@@ -29,6 +30,9 @@ public class ArrayListQueue<T> implements Queue<T> {
     @Override
     public T dequeue() throws Exception {
         // TODO - check for empty queue
+        if (isEmpty()) {
+            throw new NoSuchElementException();
+        }
         T item = buffer.get(head);
         size--;
         head = (head + 1) % buffer.size();
@@ -38,7 +42,10 @@ public class ArrayListQueue<T> implements Queue<T> {
     @Override
     public T front() throws Exception {
         // TODO
-        return null;
+        if (isEmpty()) {
+            throw new NoSuchElementException();
+        }
+        return buffer.get(head);
     }
 
     @Override
@@ -52,18 +59,24 @@ public class ArrayListQueue<T> implements Queue<T> {
     }
 
     private void ensureCapacity() {
-        // TODO: if needed > buffer.size(), double capacity and re-center head at 0
         if (size < buffer.size())
             return;
 
-        // resize and recenter
         int oldcap = buffer.size();
-        ArrayList<T> bigbuffer = new ArrayList<>(buffer.size()*2);
-        for (int i=0; i<oldcap; i++) {
-            bigbuffer.set(i, buffer.get(head));
-            head = (head + 1) % oldcap;
+        ArrayList<T> bigbuffer = new ArrayList<>(oldcap * 2);
+
+        // fill with nulls so set() works
+        for (int i = 0; i < oldcap * 2; i++) {
+            bigbuffer.add(null);
         }
-        buffer = bigbuffer; // the "old" swaperoo trick
-        tail = oldcap;
+
+        // copy elements in queue order
+        for (int i = 0; i < size; i++) {
+            bigbuffer.set(i, buffer.get((head + i) % oldcap));
+        }
+
+        buffer = bigbuffer;
+        head = 0;
+        tail = size;
     }
 }
