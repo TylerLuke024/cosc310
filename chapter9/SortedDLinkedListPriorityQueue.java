@@ -42,7 +42,7 @@ public class SortedDLinkedListPriorityQueue<T> implements PriorityQueue<T> {
         while (curr!=null) {
             if (priority<curr.getData().priority) {
                 list.addBefore(curr, newentry);
-                break;
+                return;
             }
             curr = curr.getNext();
         }
