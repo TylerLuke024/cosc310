@@ -6,7 +6,8 @@ package chapter12;
 */
 public class BankAccount
 {  
-   private double balance; 
+   private String acctno;
+   private double balance;
 
    /**
       Constructs a bank account with a zero balance.
@@ -18,11 +19,13 @@ public class BankAccount
 
    /**
       Constructs a bank account with a given balance.
+    * @param checkAcct 
       @param initialBalance the initial balance
    */
-   public BankAccount(double initialBalance)
+   public BankAccount(String acctno, double initialBalance)
    {  
-      balance = initialBalance;
+      this.acctno = acctno;
+      this.balance = initialBalance;
    }
  
    /** 
@@ -50,5 +53,9 @@ public class BankAccount
    public double getBalance()
    {  
       return balance; 
+   }
+   
+   public String getAcctno() {
+      return acctno;
    }
 }

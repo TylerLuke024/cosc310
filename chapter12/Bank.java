@@ -32,7 +32,11 @@ public class Bank
       {  
          int number = in.nextInt();
          int pin = in.nextInt();
-         Customer c = new Customer(number, pin);
+         String checkAcct = in.next();
+         double checkBalance = in.nextDouble();
+         String saveAcct = in.next();
+         double saveBalance = in.nextDouble();
+         Customer c = new Customer(number, pin, checkAcct, checkBalance, saveAcct, saveBalance);
          addCustomer(c);
       }
       in.close();
@@ -65,4 +69,5 @@ public class Bank
       }
       return null;
    }
+
 }
