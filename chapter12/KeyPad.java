@@ -28,7 +28,7 @@ public class KeyPad extends JPanel
       // Add display field
    
       display = new JTextField();
-      display.setEditable(false);
+      display.setEditable(true);
       add(display, "North");
 
       // Make button panel
@@ -62,8 +62,6 @@ public class KeyPad extends JPanel
             display.setText("");
          }
       }
-
-      ActionListener listener = new ClearButtonListener();      
 
       clearButton.addActionListener(new 
             ClearButtonListener());      

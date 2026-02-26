@@ -7,7 +7,7 @@ package chapter12;
 public class BankAccount
 {  
    private String acctno;
-   private double balance;
+   private double balance; 
 
    /**
       Constructs a bank account with a zero balance.
@@ -54,8 +54,9 @@ public class BankAccount
    {  
       return balance; 
    }
-   
+
    public String getAcctno() {
       return acctno;
    }
+
 }

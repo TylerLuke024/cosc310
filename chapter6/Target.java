@@ -31,6 +31,7 @@ abstract public class Target {
             long elapsed = end - start;
             total += elapsed;
             results[i] = elapsed;
+            System.out.println(result);
         }
         double avg = total / (double) TRIALS;
         return avg;

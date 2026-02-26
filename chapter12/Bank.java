@@ -16,7 +16,7 @@ public class Bank
       Constructs a bank with no customers.
    */
    public Bank()
-   {  
+   {      // this is my awesome bank class!
       customers = new ArrayList<Customer>();
    }
    
