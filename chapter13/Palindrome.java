@@ -2,28 +2,24 @@ package chapter13;
 
 public class Palindrome {
 
-    public static boolean Palin(String word) {
+    public static boolean palin(String word) {
         int len = word.length();
-        if (len <= 1) {
-            return true;
-        }
+        if (len<=1)
+            return true; 
         else {
             char first = word.charAt(0);
-            char last = word.charAt(word.length() -1);
-            if (first != last) {
+            char last = word.charAt(len-1);
+            if (first != last)
                 return false;
-            }
             else {
                 String shorter = word.substring(1,len-1).trim();
-                return Palin(shorter);
+                return palin(shorter);
             }
         }
     }
 
 
-
     public static void main(String[] args) {
-        System.out.println(Palin("racecar"));
-        System.out.println(Palin("hello"));
+        System.out.println(palin("racecar"));
     }
 }
