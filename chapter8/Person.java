@@ -48,10 +48,5 @@ abstract public class Person {
     public String toString() {
         return String.format("%s: %s, %s, %s, %s", getType(), name, id, addr, email);
     }
-    
-
-
-
-
 
 }
