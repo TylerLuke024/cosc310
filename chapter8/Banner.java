@@ -12,8 +12,7 @@ public class Banner {
 
         for(Person person: persons){
             if(person != null){
-                System.out.println("Name: " + person.getName());
-                System.out.println("Type: " + person.getType());
+                System.out.println(person);
             }
         }
     }
