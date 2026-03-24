@@ -42,12 +42,37 @@ public class Sorting {
         }
 
         for (int i = 1; i<list.size(); i++) {
-            T next = list.get(i);
-            list.remove(i); // remove it from the list (unconditionally)
+            T next = list.remove(i); // remove the item we are trying to insert
             int j=i-1;
             for (; j>=0 && list.get(j).compareTo(next)>0; j--); // this empty for loop finds the right spot for next
             list.add(j+1, next); // insert it at the right spot
         }
+    }
+
+    private static void bubbleSort(ArrayList<Integer> test) {
+        for (int i=0; i<test.size()-1; i++) {
+            for (int j=1; j<test.size(); j++) {
+                if (test.get(j-1).compareTo(test.get(j))>0) {
+                    swap(test, j-1, j);
+                    System.out.println(test);
+                }
+            }
+        }
+    }
+
+    public static <T extends Comparable<T>> ArrayList<T> mergeSort(ArrayList<T> list) {
+        if (list.size()<=1)
+            return list; // its already sorted guaranteed!
+
+        int mid = list.size()/2;
+        ArrayList<T> leftsorted = mergeSort((ArrayList<T>) list.subList(0,mid));
+        ArrayList<T> rightsorted = mergeSort((ArrayList<T>) list.subList(mid,list.size()));
+        return merge(leftsorted, rightsorted);
+    }
+
+    // Complete
+    private static <T extends Comparable<T>> ArrayList<T> merge(ArrayList<T> left, ArrayList<T> right) {
+        return null; // TODO: finish this method
     }
 
     public static void main(String[] args) {
@@ -57,10 +82,11 @@ public class Sorting {
         test.add(32);
         test.add(2);
         test.add(15);
+        test.add(3);
         System.out.println(test);
-        selectionSort(test);
-        System.out.println(test);
-        insertionSort(test);
+        System.out.println("==================");
+        mergeSort(test);
+        System.out.println("==================");
         System.out.println(test);
     }
 
