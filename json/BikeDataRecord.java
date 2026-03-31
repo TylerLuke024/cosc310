@@ -30,12 +30,14 @@ public class BikeDataRecord implements Comparable<BikeDataRecord> {
     private int[][] radarArray = null; // no cars are coming or going so we can get the EXACT sized array when we parse in the data
 
     // SORT CRITERIA - CHANGE THIS TO WHAT YOU WANT TO SORT BY - DEFAULTS TO DISTANCE B/C ALREADY SORTED BY TIMESTAMP
-    public static int sortCriteria = 1; // 0-timestamp 1-distance 2-heartrate, 3-speed, etc...
+    public static int sortCriteria = 1; // 0-timestamp, 1-distance, 2-heartrate, 3-speed, etc...
 
     public BikeDataRecord(JSONArray recjson) {
         timestamp = Long.parseLong(recjson.getString(0));
         distance = Float.parseFloat(recjson.getString(1));
-        // you need to do indices 2-9
+        heartrate = Integer.parseInt(recjson.getString(2));
+
+        // you need to do indices 3-9, except for 4 which is already done for you below!
         alt = Float.parseFloat(recjson.getString(4));
 
         // now let's parse in the vehicle data (from the radar array)
@@ -69,7 +71,7 @@ public class BikeDataRecord implements Comparable<BikeDataRecord> {
             case 7: return Integer.compare(pow, o.pow); 
             case 8: return Integer.compare(cad, o.cad); 
             case 9: return Integer.compare(degC, o.degC); 
-            case 10: return Long.compare(timestamp, o.timestamp); 
+            case 10: return Integer.compare(radarArray.length, o.radarArray.length); 
             default:
                 return Float.compare(alt, o.alt);
         }
