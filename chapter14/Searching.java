@@ -111,14 +111,14 @@ public class Searching {
     public static ArrayList<BikeDataRecord> binarySearch(ArrayList<BikeDataRecord> haystack, int start, int end, int needle, int index) {
         if (start <= end) {
             int mid = (start + end) / 2;
-            int val;
+            Float val;
             BikeDataRecord r = haystack.get(mid);
             switch (index) {
                 case 2: val = r.getHeartrate(); break;
                 case 7: val = r.getPow(); break;
                 case 8: val = r.getCad(); break;
                 case 9: val = r.getDegC(); break;
-                default: val = 0;
+                default: val = 0.0f;
             }
             if (val == needle) {
                 ArrayList<BikeDataRecord> hits = new ArrayList<>();
@@ -132,7 +132,7 @@ public class Searching {
                         case 7: val = r.getPow(); break;
                         case 8: val = r.getCad(); break;
                         case 9: val = r.getDegC(); break;
-                        default: val = 0;
+                        default: val = 0.0f;
                     }
                 }
                 while (i>=0 && val==needle) {
@@ -145,7 +145,7 @@ public class Searching {
                             case 7: val = r.getPow(); break;
                             case 8: val = r.getCad(); break;
                             case 9: val = r.getDegC(); break;
-                            default: val = 0;
+                            default: val = 0.0f;
                         }
                     }
                 }
@@ -158,7 +158,7 @@ public class Searching {
                         case 7: val = r.getPow(); break;
                         case 8: val = r.getCad(); break;
                         case 9: val = r.getDegC(); break;
-                        default: val = 0;
+                        default: val = 0.0f;
                     }
                 }
                  while (i<haystack.size() && val==needle) {
@@ -171,7 +171,7 @@ public class Searching {
                             case 7: val = r.getPow(); break;
                             case 8: val = r.getCad(); break;
                             case 9: val = r.getDegC(); break;
-                            default: val = 0;
+                            default: val = 0.0f;
                         }
                     }
                 }
@@ -189,5 +189,56 @@ public class Searching {
     public static ArrayList<BikeDataRecord> binarySearch(ArrayList<BikeDataRecord> haystack, int needle, int index) {
         return binarySearch(haystack, 0, haystack.size()-1, needle, index);
     }
+
+    // binary search for floats
+    public static ArrayList<BikeDataRecord> binarySearch(ArrayList<BikeDataRecord> haystack, int start, int end, float minVal, float maxVal, int index) {
+    if (start > end) return new ArrayList<>();
+    int mid = (start + end) / 2;
+    BikeDataRecord r = haystack.get(mid);
+    float val;
+    switch (index) {
+        case 3: val = r.getSpeed(); break;
+        case 4: val = r.getAlt(); break;
+        case 1: val = r.getDistance(); break;
+        default: val = 0.0f;
+    }
+    if (val >= minVal && val <= maxVal) {
+        ArrayList<BikeDataRecord> hits = new ArrayList<>();
+        hits.add(r);
+        int i = mid - 1;
+        while (i >= 0) {
+            r = haystack.get(i);
+            switch (index) {
+                case 3: val = r.getSpeed(); break;
+                case 4: val = r.getAlt(); break;
+                case 1: val = r.getDistance(); break;
+                default: val = 0.0f;
+            }
+            if (val >= minVal && val <= maxVal) { hits.add(r); i--; }
+            else break;
+        }
+        i = mid + 1;
+        while (i < haystack.size()) {
+            r = haystack.get(i);
+            switch (index) {
+                case 3: val = r.getSpeed(); break;
+                case 4: val = r.getAlt(); break;
+                case 1: val = r.getDistance(); break;
+                default: val = 0.0f;
+            }
+            if (val >= minVal && val <= maxVal) { hits.add(r); i++; }
+            else break;
+        }
+        return hits;
+    } else if (val > maxVal) {
+        return binarySearch(haystack, start, mid - 1, minVal, maxVal, index);
+    } else {
+        return binarySearch(haystack, mid + 1, end, minVal, maxVal, index);
+    }
+}
+
+    public static ArrayList<BikeDataRecord> binarySearch(ArrayList<BikeDataRecord> haystack, float minVal, float maxVal, int index) {
+        return binarySearch(haystack, 0, haystack.size()-1, minVal, maxVal, index);
+}
 
 }

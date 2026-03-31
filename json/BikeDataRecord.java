@@ -19,14 +19,14 @@ public class BikeDataRecord implements Comparable<BikeDataRecord> {
     // Radar array (which itself is an array of cars, with each car listing the distance behind (m) and relative approach speed (m/s))
     private long timestamp;
     private float distance;
-    private int heartrate;
+    private float heartrate;
     private float speed; // rider speed in m/s
     private float alt; // m
     private float lat; // m
     private float lng; // m
-    private int pow; // m
-    private int cad; // m
-    private int degC; // m
+    private float pow; // m
+    private float cad; // m
+    private float degC; // m
     private int[][] radarArray = null; // no cars are coming or going so we can get the EXACT sized array when we parse in the data
 
     // SORT CRITERIA - CHANGE THIS TO WHAT YOU WANT TO SORT BY - DEFAULTS TO DISTANCE B/C ALREADY SORTED BY TIMESTAMP
@@ -35,10 +35,14 @@ public class BikeDataRecord implements Comparable<BikeDataRecord> {
     public BikeDataRecord(JSONArray recjson) {
         timestamp = Long.parseLong(recjson.getString(0));
         distance = Float.parseFloat(recjson.getString(1));
-        heartrate = Integer.parseInt(recjson.getString(2));
-
-        // you need to do indices 3-9, except for 4 which is already done for you below!
+        heartrate = Float.parseFloat(recjson.getString(2));
+        speed = Float.parseFloat(recjson.getString(3));
         alt = Float.parseFloat(recjson.getString(4));
+        lat = Float.parseFloat(recjson.getString(5));
+        lng = Float.parseFloat(recjson.getString(6));
+        pow = Float.parseFloat(recjson.getString(7));
+        cad = Float.parseFloat(recjson.getString(8));
+        degC = Float.parseFloat(recjson.getString(9));
 
         // now let's parse in the vehicle data (from the radar array)
         JSONArray jsonRadarArray = recjson.getJSONArray(10);
@@ -63,14 +67,14 @@ public class BikeDataRecord implements Comparable<BikeDataRecord> {
         switch (sortCriteria) {
             case 0: return Long.compare(timestamp, o.timestamp); 
             case 1: return Float.compare(distance, o.distance); 
-            case 2: return Integer.compare(heartrate, o.heartrate); 
+            case 2: return Float.compare(heartrate, o.heartrate); 
             case 3: return Float.compare(speed, o.speed); 
             case 4: return Float.compare(alt, o.alt); 
             case 5: return Float.compare(lat, o.lat); 
             case 6: return Float.compare(lng, o.lng); 
-            case 7: return Integer.compare(pow, o.pow); 
-            case 8: return Integer.compare(cad, o.cad); 
-            case 9: return Integer.compare(degC, o.degC); 
+            case 7: return Float.compare(pow, o.pow); 
+            case 8: return Float.compare(cad, o.cad); 
+            case 9: return Float.compare(degC, o.degC); 
             case 10: return Integer.compare(radarArray.length, o.radarArray.length); 
             default:
                 return Float.compare(alt, o.alt);
@@ -92,7 +96,7 @@ public class BikeDataRecord implements Comparable<BikeDataRecord> {
         return distance;
     }
 
-    public int getHeartrate() {
+    public float getHeartrate() {
         return heartrate;
     }
 
@@ -112,15 +116,15 @@ public class BikeDataRecord implements Comparable<BikeDataRecord> {
         return lng;
     }
 
-    public int getPow() {
+    public float getPow() {
         return pow;
     }
 
-    public int getCad() {
+    public float getCad() {
         return cad;
     }
 
-    public int getDegC() {
+    public float getDegC() {
         return degC;
     }
 
